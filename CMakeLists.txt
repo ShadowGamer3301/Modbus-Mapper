@@ -17,3 +17,5 @@ file(GLOB MbSrc "src/*.cxx" "src/*.cpp" "src/*.cc")
 #Create executable
 add_executable(MbMapper ${MbSrc})
 
+target_link_libraries(MbMapper PRIVATE "libmodbus.so")
+target_link_directories(MbMapper PRIVATE "/usr/local/lib64")

@@ -11,8 +11,11 @@ namespace Mapper
     MB_Client();
     ~MB_Client();
 
+    bool EstablishConnection();
+    void ReadMemory(int addr, int regs);
+
   private:
     modbus_t* pModbus = nullptr;
-    std::vector<uint32_t> vecData; //Vector for holding data
+    std::vector<uint16_t> vecData; //Vector for holding data
   };
 }
