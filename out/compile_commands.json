@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/zbigniew/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Exception.cxx.o -c /home/zbigniew/Modbus-Mapper/src/Exception.cxx",
+  "file": "/home/zbigniew/Modbus-Mapper/src/Exception.cxx",
+  "output": "CMakeFiles/MbMapper.dir/src/Exception.cxx.o"
+},
+{
+  "directory": "/home/zbigniew/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/loguru.cpp.o -c /home/zbigniew/Modbus-Mapper/src/loguru.cpp",
+  "file": "/home/zbigniew/Modbus-Mapper/src/loguru.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/loguru.cpp.o"
+},
+{
+  "directory": "/home/zbigniew/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/main.cxx.o -c /home/zbigniew/Modbus-Mapper/src/main.cxx",
+  "file": "/home/zbigniew/Modbus-Mapper/src/main.cxx",
+  "output": "CMakeFiles/MbMapper.dir/src/main.cxx.o"
+}
+]
