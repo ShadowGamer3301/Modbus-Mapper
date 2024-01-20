@@ -67,9 +67,9 @@ void MB_Client::ReadMemory(int addr, int regs)
 
   for(int i = 0; i < rc; i++)
   {
-    printf("reg[%d]=%d (0x%X)\n", i, vecData[i], vecData[i]);
+    //printf("reg[%d]=%d (0x%X)\n", i, vecData[i], vecData[i]);
     result += modbus_get_float_abcd(&vecData[i]);
   }
 
-  printf("Result is: %f", result);
+  printf("Result is: %f\n", result);
 }

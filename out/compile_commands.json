@@ -22,5 +22,11 @@
   "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_client.cxx.o -c /home/zbigniew/Modbus-Mapper/src/mb_client.cxx",
   "file": "/home/zbigniew/Modbus-Mapper/src/mb_client.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/mb_client.cxx.o"
+},
+{
+  "directory": "/home/zbigniew/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o -c /home/zbigniew/Modbus-Mapper/src/mb_cmdline.cxx",
+  "file": "/home/zbigniew/Modbus-Mapper/src/mb_cmdline.cxx",
+  "output": "CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o"
 }
 ]

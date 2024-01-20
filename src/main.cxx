@@ -1,7 +1,9 @@
 #include "loguru.hpp"
 #include "ini.h"
 #include "Exception.h"
-#include "mb_client.h"
+#include "mb_cmdline.h"
+#include <iostream>
+#include <string>
 
 int main(void) try
 {
@@ -22,11 +24,15 @@ int main(void) try
 
   if(std::stoi(cfgStruct["NETWORK"]["MB_TYPE"]) == 0)
   {
-    LOG_F(INFO, "Starting MbMapper in client mode...");
-    Mapper::MB_Client client;
-    client.EstablishConnection();
-    client.ReadMemory(0x0034, 2);
-
+    LOG_F(INFO, "Starting Modbus-Mapper in client mode");
+    Mapper::MB_CmdLine cmdline;
+    while(true)
+    {
+      std::string command = "";
+      std::cout << "MB_cmd > ";
+      std::getline(std::cin, command);
+      cmdline.HandleCommand(command);
+    }
   }
 
 	return 0;
