@@ -2,9 +2,13 @@
 #include "loguru.hpp"
 #include <algorithm>
 #include <cctype>
+#include <cstdint>
+#include <cstdlib>
 #include <cstring>
+#include <ios>
 #include <modbus/modbus-tcp.h>
 #include <modbus/modbus.h>
+#include <sstream>
 #include <utility>
 
 using namespace Mapper;
@@ -84,7 +88,50 @@ void MB_CmdLine::HandleCommand(std::string cmd)
   }
 
   else if(strcmp(instruction.c_str(), "rdmem") == 0)
-  {}
+  {
+    std::string name;
+    std::string addr;
+    std::string regs;
+    int ComaCounter = 0;
+    int lastComaIndex = 5;
+
+    cmd.erase(std::remove_if(cmd.begin(), cmd.end(), [](unsigned char x) {return std::isspace(x);}), cmd.end());
+    for(int i = 5; i <= cmd.length(); i++)
+    {
+      if(cmd[i] == ',' || i == cmd.length())
+      {
+        switch (ComaCounter) {
+        case 0:
+          for(int j = lastComaIndex; j < i; j++)
+            name += cmd[j];
+          break;
+        case 1:
+          for(int j = lastComaIndex + 1; j < i; j++)
+            addr += cmd[j];
+          break;
+        case 2:
+          for(int j = lastComaIndex + 1; j < i; j++)
+            regs += cmd[j];
+          break;
+        dedefault:
+          LOG_F(WARNING, "Unusable data in rdmem instruction (Too many information)");
+        }
+        lastComaIndex = i;
+        ComaCounter++;
+      }
+    }
+    unsigned int x;
+    std::stringstream ss;
+    ss << std::hex << addr;
+    ss >> x;
+    ReadMemory(name, x, std::stoi(regs));
+    return;
+  }
+
+  else if (strcmp(instruction.c_str(), "endmm") == 0) {
+    mQuit = true;
+    return;
+  }
 
   else {
     LOG_F(ERROR, "%s is not recognized as a valid instruction", instruction.c_str());
@@ -117,4 +164,44 @@ void MB_CmdLine::FreeClient(std::string name)
     LOG_F(ERROR, "Cannot find %s client", name.c_str());
   }
   return;
+}
+
+void MB_CmdLine::ConnectClient(std::string name)
+{
+  if(auto search = mClientMap.find(name); search != mClientMap.end())
+  {
+    LOG_F(INFO, "Connecting %s client to master server", name.c_str());
+    if(modbus_connect(search->second) == -1)
+    {
+      LOG_F(ERROR, "Failed to connect to master server");
+      return;
+    }
+
+    LOG_F(INFO, "Connection established");
+  }
+}
+
+void MB_CmdLine::ReadMemory(std::string name, int addr, int regs)
+{
+  ConnectClient(name);
+  if(auto search = mClientMap.find(name); search != mClientMap.end())
+  {
+    LOG_F(INFO, "Reading memory from %x addr", addr);
+    std::vector<uint16_t> vecData;
+    vecData.resize(sizeof(uint16_t) * regs);
+    int rc = modbus_read_registers(search->second, addr, regs, vecData.data());
+    if(rc == -1)
+    {
+      LOG_F(ERROR, "Cannot read desired memory address");
+      return;
+    }
+
+    float result = 0.0f;
+    for(int i = 0; i < rc; i++)
+    {
+      result += modbus_get_float_abcd(&vecData[i]);
+    }
+
+    LOG_F(INFO, "Result is: %f", result);
+  }
 }

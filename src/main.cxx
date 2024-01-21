@@ -26,7 +26,7 @@ int main(void) try
   {
     LOG_F(INFO, "Starting Modbus-Mapper in client mode");
     Mapper::MB_CmdLine cmdline;
-    while(true)
+    while(!cmdline.ShouldQuit())
     {
       std::string command = "";
       std::cout << "MB_cmd > ";
