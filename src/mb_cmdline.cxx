@@ -5,10 +5,12 @@
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
+#include <ctime>
 #include <ios>
 #include <modbus/modbus-tcp.h>
 #include <modbus/modbus.h>
 #include <sstream>
+#include <string>
 #include <utility>
 
 using namespace Mapper;
@@ -133,6 +135,18 @@ void MB_CmdLine::HandleCommand(std::string cmd)
     return;
   }
 
+  else if(strcmp(instruction.c_str(), "store") == 0)
+  {
+    std::string name;
+    for(int i = 5; i == cmd.length(); i++)
+    {
+      name += cmd[i];
+    }
+
+    LOG_F(INFO, "Storing readings for %s client", name.c_str());
+    mReadingClientName = name;
+  }
+
   else {
     LOG_F(ERROR, "%s is not recognized as a valid instruction", instruction.c_str());
   }
@@ -203,5 +217,21 @@ void MB_CmdLine::ReadMemory(std::string name, int addr, int regs)
     }
 
     LOG_F(INFO, "Result is: %f", result);
+
+    if(strcmp(name.c_str(), mReadingClientName.c_str()) == 0)
+    {
+      Reading rd;
+      rd.readVal = result;
+      LOG_F(INFO, "Storing %f value, read on %s in Readings buffer", result, TimeToString(rd.readTime).c_str());
+    }
   }
+}
+
+std::string MB_CmdLine::TimeToString(std::time_t t)
+{
+  std::tm* ptm = std::localtime(&t);
+  char buffer[32];
+  std:strftime(buffer, 32, "%a, %d.%m.%Y %H:%M:%S", ptm);
+  std::string result = buffer;
+  return result;
 }

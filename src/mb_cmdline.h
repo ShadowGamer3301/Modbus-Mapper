@@ -1,6 +1,8 @@
 #include "Exception.h"
 #include "mb_client.h"
+#include <ctime>
 #include <map>
+#include "mb_reading.h"
 
 namespace Mapper
 {
@@ -18,9 +20,13 @@ namespace Mapper
     void FreeClient(std::string name);
     void ReadMemory(std::string name, int addr, int regs);
     void ConnectClient(std::string name);
+    void SetReadingClient(std::string name);
+    std::string TimeToString(std::time_t t);
 
   private:
     bool mQuit = false;
+    std::string mReadingClientName;
     std::map<std::string, modbus_t*> mClientMap;
+    std::vector<Reading> vecReadings;
   };
 } 
