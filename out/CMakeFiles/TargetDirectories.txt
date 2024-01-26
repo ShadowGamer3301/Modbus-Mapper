@@ -1,3 +1,0 @@
-/home/zbychu/Modbus-Mapper/out/CMakeFiles/MbMapper.dir
-/home/zbychu/Modbus-Mapper/out/CMakeFiles/edit_cache.dir
-/home/zbychu/Modbus-Mapper/out/CMakeFiles/rebuild_cache.dir
