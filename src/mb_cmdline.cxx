@@ -136,30 +136,16 @@ void MB_CmdLine::HandleCommand(std::string cmd)
     return;
   }
 
-<<<<<<< HEAD
   else if (strcmp(instruction.c_str(), "store") == 0)
   {
     vecReadings.clear();
     mStoreReadings = true;
+    LOG_F(WARNING, "Storage option enabled");
   }
 
   else if (strcmp(instruction.c_str(), "tocsv") == 0)
   {
-
-=======
-  else if(strcmp(instruction.c_str(), "store") == 0)
-  {
-    std::string name;
-    for(int i = 5; i == cmd.length(); i++)
-    {
-      name += cmd[i];
-    }
-
-    LOG_F(INFO, "Storing readings for %s client", name.c_str());
-    mReadingClientName = name;
->>>>>>> refs/remotes/origin/main
   }
-
   else {
     LOG_F(ERROR, "%s is not recognized as a valid instruction", instruction.c_str());
   }
@@ -229,35 +215,17 @@ void MB_CmdLine::ReadMemory(std::string name, int addr, int regs)
       result += modbus_get_float_abcd(&vecData[i]);
     }
 
-<<<<<<< HEAD
     if(mStoreReadings)
     {
       time_t now = std::time(0);
       Reading rd;
       rd.recTime = Mapper::TimeToString(now);
       rd.recValue = result;
+      vecReadings.push_back(rd);
       LOG_F(INFO, "Value %f stored (TIME: %s)", rd.recValue, rd.recTime.c_str());
     }
     else {
-      LOG_F(INFO, "Result is: %f", result);
-=======
-    LOG_F(INFO, "Result is: %f", result);
-
-    if(strcmp(name.c_str(), mReadingClientName.c_str()) == 0)
-    {
-      Reading rd;
-      rd.readVal = result;
-      LOG_F(INFO, "Storing %f value, read on %s in Readings buffer", result, TimeToString(rd.readTime).c_str());
->>>>>>> refs/remotes/origin/main
+      LOG_F(INFO, "Value is: %f", result);
     }
   }
-}
-
-std::string MB_CmdLine::TimeToString(std::time_t t)
-{
-  std::tm* ptm = std::localtime(&t);
-  char buffer[32];
-  std:strftime(buffer, 32, "%a, %d.%m.%Y %H:%M:%S", ptm);
-  std::string result = buffer;
-  return result;
 }
