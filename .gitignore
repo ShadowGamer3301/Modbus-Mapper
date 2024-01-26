@@ -1,0 +1,4 @@
+#Exclude everything from out except config and clangd settings
+out/*
+!out/config.ini
+!out/compile_commands.json
