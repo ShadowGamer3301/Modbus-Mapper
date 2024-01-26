@@ -1,6 +1,8 @@
 #include "Exception.h"
 #include "mb_client.h"
 #include <map>
+#include <vector>
+#include "Reading.h"
 
 namespace Mapper
 {
@@ -21,6 +23,8 @@ namespace Mapper
 
   private:
     bool mQuit = false;
+    bool mStoreReadings = false;
+    std::vector<Mapper::Reading> vecReadings;
     std::map<std::string, modbus_t*> mClientMap;
   };
 } 

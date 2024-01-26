@@ -1,32 +1,38 @@
 [
 {
-  "directory": "/home/zbigniew/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Exception.cxx.o -c /home/zbigniew/Modbus-Mapper/src/Exception.cxx",
-  "file": "/home/zbigniew/Modbus-Mapper/src/Exception.cxx",
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Exception.cxx.o -c /home/zbychu/Modbus-Mapper/src/Exception.cxx",
+  "file": "/home/zbychu/Modbus-Mapper/src/Exception.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/Exception.cxx.o"
 },
 {
-  "directory": "/home/zbigniew/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/loguru.cpp.o -c /home/zbigniew/Modbus-Mapper/src/loguru.cpp",
-  "file": "/home/zbigniew/Modbus-Mapper/src/loguru.cpp",
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Window.cxx.o -c /home/zbychu/Modbus-Mapper/src/Window.cxx",
+  "file": "/home/zbychu/Modbus-Mapper/src/Window.cxx",
+  "output": "CMakeFiles/MbMapper.dir/src/Window.cxx.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/loguru.cpp.o -c /home/zbychu/Modbus-Mapper/src/loguru.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/loguru.cpp",
   "output": "CMakeFiles/MbMapper.dir/src/loguru.cpp.o"
 },
 {
-  "directory": "/home/zbigniew/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/main.cxx.o -c /home/zbigniew/Modbus-Mapper/src/main.cxx",
-  "file": "/home/zbigniew/Modbus-Mapper/src/main.cxx",
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/main.cxx.o -c /home/zbychu/Modbus-Mapper/src/main.cxx",
+  "file": "/home/zbychu/Modbus-Mapper/src/main.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/main.cxx.o"
 },
 {
-  "directory": "/home/zbigniew/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_client.cxx.o -c /home/zbigniew/Modbus-Mapper/src/mb_client.cxx",
-  "file": "/home/zbigniew/Modbus-Mapper/src/mb_client.cxx",
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_client.cxx.o -c /home/zbychu/Modbus-Mapper/src/mb_client.cxx",
+  "file": "/home/zbychu/Modbus-Mapper/src/mb_client.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/mb_client.cxx.o"
 },
 {
-  "directory": "/home/zbigniew/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o -c /home/zbigniew/Modbus-Mapper/src/mb_cmdline.cxx",
-  "file": "/home/zbigniew/Modbus-Mapper/src/mb_cmdline.cxx",
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o -c /home/zbychu/Modbus-Mapper/src/mb_cmdline.cxx",
+  "file": "/home/zbychu/Modbus-Mapper/src/mb_cmdline.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o"
 }
 ]

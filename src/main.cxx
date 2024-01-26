@@ -1,3 +1,4 @@
+#include "Window.h"
 #include "loguru.hpp"
 #include "ini.h"
 #include "Exception.h"
@@ -25,13 +26,25 @@ int main(void) try
   if(std::stoi(cfgStruct["NETWORK"]["MB_TYPE"]) == 0)
   {
     LOG_F(INFO, "Starting Modbus-Mapper in client mode");
-    Mapper::MB_CmdLine cmdline;
-    while(!cmdline.ShouldQuit())
+
+    if(std::stoi(cfgStruct["GENERAL"]["MB_GUI"]) == 0)
     {
-      std::string command = "";
-      std::cout << "MB_cmd > ";
-      std::getline(std::cin, command);
-      cmdline.HandleCommand(command);
+      Mapper::MB_CmdLine cmdline;
+      while(!cmdline.ShouldQuit())
+      {
+        std::string command = "";
+        std::cout << "MB_cmd > ";
+        std::getline(std::cin, command);
+        cmdline.HandleCommand(command);
+      }
+    }
+    else {
+      LOG_F(INFO, "Creating modbus GUI");
+      Mapper::Window wnd("Modbus-Mapper", 800, 600);
+      while(!wnd.ProcessEvent())
+      {
+
+      }
     }
   }
 

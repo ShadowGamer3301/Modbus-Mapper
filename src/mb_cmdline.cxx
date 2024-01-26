@@ -1,4 +1,5 @@
 #include "mb_cmdline.h"
+#include "Reading.h"
 #include "loguru.hpp"
 #include <algorithm>
 #include <cctype>
@@ -133,6 +134,17 @@ void MB_CmdLine::HandleCommand(std::string cmd)
     return;
   }
 
+  else if (strcmp(instruction.c_str(), "store") == 0)
+  {
+    vecReadings.clear();
+    mStoreReadings = true;
+  }
+
+  else if (strcmp(instruction.c_str(), "tocsv") == 0)
+  {
+
+  }
+
   else {
     LOG_F(ERROR, "%s is not recognized as a valid instruction", instruction.c_str());
   }
@@ -202,6 +214,16 @@ void MB_CmdLine::ReadMemory(std::string name, int addr, int regs)
       result += modbus_get_float_abcd(&vecData[i]);
     }
 
-    LOG_F(INFO, "Result is: %f", result);
+    if(mStoreReadings)
+    {
+      time_t now = std::time(0);
+      Reading rd;
+      rd.recTime = Mapper::TimeToString(now);
+      rd.recValue = result;
+      LOG_F(INFO, "Value %f stored (TIME: %s)", rd.recValue, rd.recTime.c_str());
+    }
+    else {
+      LOG_F(INFO, "Result is: %f", result);
+    }
   }
 }
