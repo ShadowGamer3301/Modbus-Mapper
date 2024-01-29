@@ -3,16 +3,23 @@
 #include "loguru.hpp"
 #include <algorithm>
 #include <cctype>
+#include <chrono>
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <fstream>
 #include <ios>
 #include <modbus/modbus-tcp.h>
 #include <modbus/modbus.h>
 #include <sstream>
 #include <string>
+#include <thread>
+#include <unistd.h>
 #include <utility>
+#include "csv2/writer.hpp"
+#include "csv2/parameters.hpp"
+#include "csv2/mio.hpp"
 
 using namespace Mapper;
 
@@ -145,6 +152,73 @@ void MB_CmdLine::HandleCommand(std::string cmd)
 
   else if (strcmp(instruction.c_str(), "tocsv") == 0)
   {
+    std::string outName;
+    cmd.erase(std::remove_if(cmd.begin(), cmd.end(), [](unsigned char x) {return std::isspace(x);}), cmd.end());
+    for(int i = 5; i < cmd.length(); i++)
+    {
+      outName += cmd[i];
+    }
+
+    LOG_F(WARNING, "Outputing readings to %s", outName.c_str());
+    std::vector<std::vector<std::string>> rows;
+    std::vector<std::string> row;
+    row.push_back("Value");
+    row.push_back("Time");
+    rows.push_back(row);
+
+    for(int i = 0; i < vecReadings.size(); i++)
+    {
+      row.clear();
+      row.push_back(std::to_string(vecReadings[i].recValue));
+      row.push_back(vecReadings[i].recTime);
+      rows.push_back(row);
+    }
+    std::ofstream stream(outName);
+    csv2::Writer<csv2::delimiter<';'>> writer(stream);
+    writer.write_rows(rows);
+  }
+  else if (strcmp(instruction.c_str(), "rdenl") == 0)
+  {
+    std::string name, addr, regs;
+    int ComaCounter = 0, lastComaIndex = 5;
+    cmd.erase(std::remove_if(cmd.begin(), cmd.end(), [](unsigned char x) {return std::isspace(x);}), cmd.end());
+    for(int i = 5; i <= cmd.length(); i++)
+    {
+      if(cmd[i] == ',' || i == cmd.length())
+      {
+        switch (ComaCounter) {
+          case 0:
+            for(int j = lastComaIndex; j < i; j++)
+              name += cmd[j];
+            break;
+          case 1:
+            for(int j = lastComaIndex + 1; j < i; j++)
+              addr += cmd[j];
+            break;
+          case 2:
+            for(int j = lastComaIndex + 1; j < i; j++)
+              regs += cmd[j];
+            break;
+        }
+        ComaCounter++;
+        lastComaIndex = i;
+      }
+    }
+    unsigned int x;
+    std::stringstream ss;
+    ss << std::hex << addr;
+    ss >> x;
+    HandleCommand("store");
+    LOG_F(WARNING, "Regs is: %s", regs.c_str());
+    while(true)
+    {
+      for(int i = 0; i < 60; i++)
+      {
+        ReadMemory(name, x, std::stoi(regs));
+        std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(60));
+      }
+      HandleCommand("tocsv output.csv");
+    }
   }
   else {
     LOG_F(ERROR, "%s is not recognized as a valid instruction", instruction.c_str());
