@@ -17,5 +17,13 @@ file(GLOB MbSrc "src/*.cxx" "src/*.cpp" "src/*.cc")
 #Create executable
 add_executable(MbMapper ${MbSrc})
 
-target_link_libraries(MbMapper PRIVATE "libmodbus.so" "libglfw.so" "libGL.so")
-target_link_directories(MbMapper PRIVATE "/usr/local/lib64")
+#Set linking for Linux
+if(UNIX)
+  target_link_libraries(MbMapper PRIVATE "libmodbus.so" "libglfw.so" "libGL.so")
+
+  #Link libmodbus for Arch Linux (I use Arch BTW)
+  target_link_directories(MbMapper PRIVATE "/usr/local/lib64")
+
+  #Link libmodbus for OpenSUSE Linux
+  target_link_directories(MbMapper PRIVATE "/usr/local/lib")
+endif()

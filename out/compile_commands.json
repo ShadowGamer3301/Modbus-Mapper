@@ -1,37 +1,73 @@
 [
 {
   "directory": "/home/zbychu/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Exception.cxx.o -c /home/zbychu/Modbus-Mapper/src/Exception.cxx",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Exception.cxx.o -c /home/zbychu/Modbus-Mapper/src/Exception.cxx",
   "file": "/home/zbychu/Modbus-Mapper/src/Exception.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/Exception.cxx.o"
 },
 {
   "directory": "/home/zbychu/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Window.cxx.o -c /home/zbychu/Modbus-Mapper/src/Window.cxx",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/Window.cxx.o -c /home/zbychu/Modbus-Mapper/src/Window.cxx",
   "file": "/home/zbychu/Modbus-Mapper/src/Window.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/Window.cxx.o"
 },
 {
   "directory": "/home/zbychu/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/loguru.cpp.o -c /home/zbychu/Modbus-Mapper/src/loguru.cpp",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/imgui.cpp.o -c /home/zbychu/Modbus-Mapper/src/imgui.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/imgui.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/imgui.cpp.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/imgui_draw.cpp.o -c /home/zbychu/Modbus-Mapper/src/imgui_draw.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/imgui_draw.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/imgui_draw.cpp.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/imgui_impl_glfw.cpp.o -c /home/zbychu/Modbus-Mapper/src/imgui_impl_glfw.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/imgui_impl_glfw.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/imgui_impl_glfw.cpp.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/imgui_impl_opengl3.cpp.o -c /home/zbychu/Modbus-Mapper/src/imgui_impl_opengl3.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/imgui_impl_opengl3.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/imgui_impl_opengl3.cpp.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/imgui_tables.cpp.o -c /home/zbychu/Modbus-Mapper/src/imgui_tables.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/imgui_tables.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/imgui_tables.cpp.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/imgui_widgets.cpp.o -c /home/zbychu/Modbus-Mapper/src/imgui_widgets.cpp",
+  "file": "/home/zbychu/Modbus-Mapper/src/imgui_widgets.cpp",
+  "output": "CMakeFiles/MbMapper.dir/src/imgui_widgets.cpp.o"
+},
+{
+  "directory": "/home/zbychu/Modbus-Mapper/out",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/loguru.cpp.o -c /home/zbychu/Modbus-Mapper/src/loguru.cpp",
   "file": "/home/zbychu/Modbus-Mapper/src/loguru.cpp",
   "output": "CMakeFiles/MbMapper.dir/src/loguru.cpp.o"
 },
 {
   "directory": "/home/zbychu/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/main.cxx.o -c /home/zbychu/Modbus-Mapper/src/main.cxx",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/main.cxx.o -c /home/zbychu/Modbus-Mapper/src/main.cxx",
   "file": "/home/zbychu/Modbus-Mapper/src/main.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/main.cxx.o"
 },
 {
   "directory": "/home/zbychu/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_client.cxx.o -c /home/zbychu/Modbus-Mapper/src/mb_client.cxx",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_client.cxx.o -c /home/zbychu/Modbus-Mapper/src/mb_client.cxx",
   "file": "/home/zbychu/Modbus-Mapper/src/mb_client.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/mb_client.cxx.o"
 },
 {
   "directory": "/home/zbychu/Modbus-Mapper/out",
-  "command": "/usr/bin/clang++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o -c /home/zbychu/Modbus-Mapper/src/mb_cmdline.cxx",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o -c /home/zbychu/Modbus-Mapper/src/mb_cmdline.cxx",
   "file": "/home/zbychu/Modbus-Mapper/src/mb_cmdline.cxx",
   "output": "CMakeFiles/MbMapper.dir/src/mb_cmdline.cxx.o"
 }

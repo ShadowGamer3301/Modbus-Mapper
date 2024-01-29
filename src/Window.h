@@ -1,6 +1,10 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include <cstdint>
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include "mb_cmdline.h"
 
 namespace Mapper
 {
@@ -17,5 +21,6 @@ namespace Mapper
 
   private:
     GLFWwindow* pWnd;
+    Mapper::MB_CmdLine cmd;
   };
 }

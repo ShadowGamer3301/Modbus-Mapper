@@ -1,3 +1,4 @@
+#pragma once
 #include "Exception.h"
 #include "mb_client.h"
 #include <ctime>
@@ -9,6 +10,7 @@ namespace Mapper
 {
   class MB_CmdLine
   {
+    friend class Window;
   public:
     MB_CmdLine() = default;
     ~MB_CmdLine();

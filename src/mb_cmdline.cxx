@@ -234,6 +234,15 @@ MB_CmdLine::~MB_CmdLine()
 
 void MB_CmdLine::CreateClient(std::string ip, int port, std::string name)
 {
+  for(auto client : mClientMap)
+  {
+    if(strcmp(name.c_str(), client.first.c_str()) == 0)
+    {
+      LOG_F(ERROR, "Cannot create client, name no uniqe!");
+      return;
+    }
+  }
+
   mClientMap.emplace(std::make_pair(name, modbus_new_tcp(ip.c_str(), port)));
 }
 
